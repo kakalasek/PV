@@ -9,6 +9,5 @@ while True:
 
     if decision.isnumeric():
         if int(decision):
+            print("Sbohem")
             break
-
-    print("Sbohem")
