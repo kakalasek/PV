@@ -1,10 +1,10 @@
-import math
+from math import pi
 
 def calculate_content(radius: float) -> float:
     if radius <= 0:
         raise ArithmeticError("Invalid radius")
     
-    return math.pi * (radius**2)
+    return pi * (radius**2)
 
 try:
     radius = input("Enter a radius: ")
