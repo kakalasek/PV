@@ -1,5 +1,5 @@
 """
-There are a few methos you can use to append an element to a set. I only list those methods which do not create a new object
+There are a few methods you can use to append an element to a set. I only list those methods which do not create a new object
 """
 s = {1, 2, 3}
 
