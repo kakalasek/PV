@@ -21,4 +21,4 @@ for town, country in towns.items():
         break
 
 if not everything_worked:
-    print("No match was found for your request. Make sure you typed everything correctly")
+    print("Nebyl nalezen žádný záznam pro váš dotaz")
