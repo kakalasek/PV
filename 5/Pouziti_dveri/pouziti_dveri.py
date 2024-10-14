@@ -6,12 +6,15 @@ class Doors():
         if not isinstance(locked, bool):
             raise TypeError("The 'locked' attribute must be a boolean")
         self.locked = locked
-        self.is_open = False
+        self.opened = False
 
     def open(self) -> None:
         if self.locked:
             raise LockedDoorsException
-        self.is_open = True
+        self.opened = True
+
+    def is_open(self) -> bool:
+        return self.opened
 
 d = Doors(locked=True)
 try:
@@ -21,3 +24,5 @@ except LockedDoorsException as e:
     print("Doors are locked, you cant open them")
 except TypeError as e:
     print(e)
+finally:
+    print("You have successfuly arrived on the other side of the door") if d.is_open() else print("You have not been able to open the door")
