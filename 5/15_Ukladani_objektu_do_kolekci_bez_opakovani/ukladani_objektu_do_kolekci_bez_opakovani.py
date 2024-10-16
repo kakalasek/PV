@@ -52,7 +52,20 @@ class Zbozi:
         if not isinstance(other, Zbozi):
             raise Exception('Porovnanvat lze jen zbozi mezi sebou')
         
-        return self._vaha == other._vaha 
+        return self._vaha == other._vaha and self._nazev == other._nazev
+    
+    def __hash__(self):
+        return hash((self._vaha, self._nazev))
     
 zbozi1 = Zbozi("Mrkev", 1)
 print(hash(zbozi1))
+
+zbozi1 = Zbozi("Mrkev", 1)
+zbozi2 = Zbozi("Mrkev", 1)
+zbozi3 = Zbozi("Celer", 1)
+
+x = set()
+x.add(zbozi1)
+x.add(zbozi2)
+x.add(zbozi3)
+print(len(x))
