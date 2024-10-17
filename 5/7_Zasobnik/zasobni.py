@@ -10,7 +10,7 @@ class Node():
         :param value: The value this Node holds
         :param next: Must be of type Node or None. The next Node this Node points to 
         """
-        if not isinstance(next, Node) and not isinstance(next, None):
+        if not isinstance(next, Node) and next is not None:
             raise TypeError("Argument 'next' must be of type 'Node' or None")
 
         self._value = value 
@@ -28,18 +28,21 @@ class Node():
     def next(self):
         return self._next
     
-    @value.setter
+    @next.setter
     def next(self, next):
         """
         Setter for the next Node
 
         :param next: Must be of type Node or None 
         """
-        if not isinstance(next, Node) and not isinstance(next, None):
+        if not isinstance(next, Node) and next is not None:
             raise TypeError("Argument 'next' must be of type 'Node' or None")
         self._next = next
 
     def __str__(self):
+        return str(self.value)
+    
+    def __repr__(self):
         return str(self.value)
 
 class Stack():
@@ -60,33 +63,40 @@ class Stack():
 
         :param value: Value to add to the top 
         """
-        if self.head == None:
-            self.size += 1
-            self.head = Node(value, None)
+        if self._top is None:
+            self._size += 1
+            self._top = Node(value, None)
         else:
-            self.size += 1
-            new_head = Node(value, self.head)
-            self.head = new_head
+            self._size += 1
+            new_top = Node(value, self._top)
+            self._top = new_top
 
     def pop(self):
         """
         This method removes an element from the top of the stack and returns it
 
-        :return: The value of the top most element inside the Stack
+        :return: The value of the top most element inside the Stack. Or None if the Stack is empty
         """
-        raise NotImplementedError 
+        if self._top is None:
+            return None
+
+        temp = self._top
+        self._top = self._top.next
+        self._size -= 1
+        return temp
 
     def count(self):
         """
         This method returns the current number of elements inside the Stack 
         """
-        raise NotImplementedError
+        return self._size
 
     def clear(self):
         """
         This method clears the entire Stack
         """
-        raise NotImplementedError
+        self._top = None
+        self._size = 0    
 
     def popAll(self):
         """
@@ -94,13 +104,20 @@ class Stack():
 
         :return: List of all elements from the Stack
         """
-        raise NotImplementedError    
+        output = []
+        current = self.pop()
+        print(current)
+        while current is not None:
+            output.append(current)
+            current = self.pop()
+        
+        return output
 
     def __iter__(self):
         """
         This method returns the current number of elements inside the stack. It is NOT thread safe
         """
-        self.current = self.head
+        self.current = self._top
         return self
     
     def __next__(self):
@@ -113,4 +130,12 @@ class Stack():
         temp: Node = self.current
         self.current: Node = self.current.next
         return temp
-    
+
+stk = Stack()
+stk.add("Hello")
+stk.add(11)
+stk.add(21.11)
+for item in stk:
+    print(item)
+
+print(stk.popAll())
