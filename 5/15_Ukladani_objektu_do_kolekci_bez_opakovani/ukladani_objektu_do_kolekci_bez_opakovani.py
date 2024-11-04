@@ -58,7 +58,7 @@ class Zbozi:
         return hash((self._vaha, self._nazev))
     
 zbozi1 = Zbozi("Mrkev", 1)
-print(hash(zbozi1))
+#print(hash(zbozi1))
 
 zbozi1 = Zbozi("Mrkev", 1)
 zbozi2 = Zbozi("Mrkev", 1)
@@ -68,4 +68,21 @@ x = set()
 x.add(zbozi1)
 x.add(zbozi2)
 x.add(zbozi3)
-print(len(x))
+#print(len(x))
+
+
+class TestClass():
+    def __init__(self, a):
+        self._a = a
+
+    def __eq__(self, other):
+        return self._a == other._a
+    
+    def __hash__(self):
+        return hash((self._a))
+
+testa = TestClass('hello')
+testb = TestClass('hello')
+
+print(hash(testa))
+print(hash(testb))
