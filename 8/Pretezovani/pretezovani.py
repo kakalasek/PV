@@ -30,7 +30,8 @@ class ZlevneneZbozi(Zbozi):
 
     def get_cena(self):
         return self._cena - (self._sleva * self._cena)
-    
-tycinka = ZlevneneZbozi('margot', 15, 0.2)
-print(tycinka.get_cena())
+
+if __name__ == '__main__':    
+    tycinka = ZlevneneZbozi('margot', 15, 0.2)
+    print(tycinka.get_cena())
         
