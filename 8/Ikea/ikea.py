@@ -39,11 +39,11 @@ class Sjorapport(IkeaItem, PlasticWasteIkeaItem):
         PlasticWasteIkeaItem.__init__(self, plastic_weight) 
         self.expiration = expiration
         self.weight = weight
+if __name__ == '__main__':
+    samla = Samla_box(15, 'K', 'samla box big', 700, 50, 10, 5, 20, 30)
+    lack = Lack(14, 'K', 'lack small', 150, 'green', 20, 30, 20)
+    sjorapport =  Sjorapport(3, 'D', 'sjor medium', 300, '2025-07-04', 150, 20)
 
-samla = Samla_box(15, 'K', 'samla box big', 700, 50, 10, 5, 20, 30)
-lack = Lack(14, 'K', 'lack small', 150, 'green', 20, 30, 20)
-sjorapport =  Sjorapport(3, 'D', 'sjor medium', 300, '2025-07-04', 150, 20)
-
-print(samla.plastic_weight)
-print(lack.size_z)
-print(sjorapport.name)
+    print(samla.plastic_weight)
+    print(lack.size_z)
+    print(sjorapport.name)
