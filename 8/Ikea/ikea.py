@@ -10,19 +10,40 @@ class IkeaItem:
         self.name = name
         self.price = price
 
+class MeasureableIkeaItem():
+    def __init__(self, size_x, size_y, size_z):
+        self.size_x = size_x
+        self.size_y = size_y
+        self.size_z = size_z
 
-class lack(IkeaItem):
-    def __init__(self, shelf_number, aisle_number, name, price, color):
-        super().__init__(self, shelf_number, aisle_number, name, price)
+class PlasticWasteIkeaItem():
+    def __init__(self, plastic_weight):
+        self.plastic_weight = plastic_weight
+
+class Lack(IkeaItem, MeasureableIkeaItem):
+    def __init__(self, shelf_number, aisle_number, name, price, color, size_x, size_y, size_z):
+        IkeaItem.__init__(self, shelf_number, aisle_number, name, price)
+        MeasureableIkeaItem.__init__(self, size_x, size_y, size_z)
         self.color = color
 
-class samla_box(IkeaItem):
-    def __init__(self, shelf_number, aisle_number, name, price, volume):
-        super().__init__(self, shelf_number, aisle_number, name, price)
+class Samla_box(IkeaItem, MeasureableIkeaItem, PlasticWasteIkeaItem):
+    def __init__(self, shelf_number, aisle_number, name, price, volume, size_x, size_y, size_z, plastic_weight):
+        IkeaItem.__init__(self, shelf_number, aisle_number, name, price)
+        MeasureableIkeaItem.__init__(self, size_x, size_y, size_z)
+        PlasticWasteIkeaItem.__init__(self, plastic_weight)
         self.volume = volume
 
-class sjorapport(IkeaItem):
-    def __init__(self, shelf_number, aisle_number, name, price, expiration, weight):
-        super().__init__(self, shelf_number, aisle_number, name, price)
+class Sjorapport(IkeaItem, PlasticWasteIkeaItem):
+    def __init__(self, shelf_number, aisle_number, name, price, expiration, weight, plastic_weight):
+        IkeaItem.__init__(self, shelf_number, aisle_number, name, price)
+        PlasticWasteIkeaItem.__init__(self, plastic_weight) 
         self.expiration = expiration
         self.weight = weight
+
+samla = Samla_box(15, 'K', 'samla box big', 700, 50, 10, 5, 20, 30)
+lack = Lack(14, 'K', 'lack small', 150, 'green', 20, 30, 20)
+sjorapport =  Sjorapport(3, 'D', 'sjor medium', 300, '2025-07-04', 150, 20)
+
+print(samla.plastic_weight)
+print(lack.size_z)
+print(sjorapport.name)
