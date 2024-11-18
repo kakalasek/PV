@@ -30,3 +30,5 @@ class GeneratorKrasovychJezer():
 for jezero in GeneratorKrasovychJezer():
     print(jezero)
 
+for jezero in GeneratorKrasovychJezer():
+    print(jezero)
