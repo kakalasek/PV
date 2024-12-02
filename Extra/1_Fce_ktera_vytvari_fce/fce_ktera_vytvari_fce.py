@@ -3,13 +3,19 @@ def generuj_pricitaci_funkci(krok):
         return cislo+krok
     return pricitej
 
-x = generuj_pricitaci_funkci(5)
-y = generuj_pricitaci_funkci(-1)
+def generuj_nasobici_funkci(krok):
+    def nasob(cislo):
+        return cislo*krok
+    return nasob
 
-print(x(1))
-print(x(2))
-print(x(3))
+nasob_nulou = generuj_nasobici_funkci(0)
+nasob_jednickou = generuj_nasobici_funkci(1)
+nasob_minus_jednickou = generuj_nasobici_funkci(-1)
+nasob_sedmnactkou = generuj_nasobici_funkci(17)
+nasob_devet_set_devitkou = generuj_nasobici_funkci(919)
 
-print(y(1))
-print(y(2))
-print(y(3))
+print(nasob_nulou(20))
+print(nasob_jednickou(20))
+print(nasob_minus_jednickou(20))
+print(nasob_sedmnactkou(20))
+print(nasob_devet_set_devitkou(20))
