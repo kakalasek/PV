@@ -142,13 +142,13 @@ class TestLahve(unittest.TestCase):
             bottle.set_fullness_in_liters(-0.1)
         
         with self.assertRaises(ValueError):
-            bottle.set_fullness_in_liters(101e3)
+            bottle.set_fullness_in_milis(101e3)
         with self.assertRaises(ValueError):
-            bottle.set_fullness_in_liters(100.1e3)
+            bottle.set_fullness_in_milis(100.1e3)
         with self.assertRaises(ValueError):
-            bottle.set_fullness_in_liters(-10e3)
+            bottle.set_fullness_in_milis(-10e3)
         with self.assertRaises(ValueError):
-            bottle.set_fullness_in_liters(-0.1e3)
+            bottle.set_fullness_in_milis(-0.1e3)
 
 if __name__ == "__main__":
     unittest.main()
