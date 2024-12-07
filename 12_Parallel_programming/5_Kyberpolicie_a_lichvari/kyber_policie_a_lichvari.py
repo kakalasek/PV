@@ -53,6 +53,11 @@ if __name__ == "__main__":
 
     hash_hledaneho_rc = "5275a2bd25897f396e5f1de8b1ede4fe94d960b20619c772a3b4eccd04430afdabc44e5d388f175aa72428e009ff927c"
     start = time.time()
+    """ One Process
+    p1 = HledejProcess(0, 3_000_000, hash_hledaneho_rc)
+    p1.start()
+    p1.join()
+    """
     """ Processes
     p1 = HledejProcess(0, 750_000, hash_hledaneho_rc)
     p2 = HledejProcess(750_001, 1_500_000, hash_hledaneho_rc)

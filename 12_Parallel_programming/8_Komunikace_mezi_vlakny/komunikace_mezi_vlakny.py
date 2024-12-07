@@ -74,12 +74,24 @@ if __name__ == "__main__":
     """
     """ Threads
     """
-    t1 = HledejThread(0, 1_500_000, hash_hledaneho_rc)
-    t2 = HledejThread(1_500_001, 3_000_000, hash_hledaneho_rc)
+    t1 = HledejThread(0, 500_000, hash_hledaneho_rc)
+    t2 = HledejThread(500_001, 1_000_000, hash_hledaneho_rc)
+    t3 = HledejThread(1_000_001, 1_500_000, hash_hledaneho_rc)
+    t4 = HledejThread(1_500_001, 2_000_000, hash_hledaneho_rc)
+    t5 = HledejThread(2_000_001, 2_500_000, hash_hledaneho_rc)
+    t6 = HledejThread(2_500_001, 3_000_000, hash_hledaneho_rc)
     t1.start()
     t2.start()
+    t3.start()
+    t4.start()
+    t5.start()
+    t6.start()
     t1.join()
     t2.join()
+    t3.join()
+    t4.join()
+    t5.join()
+    t6.join()
     
     print("Nalezen zaznam na radku {} pro rodne cislo {} s dluhem {} CZK.".format(zaznam[0],zaznam[1], zaznam[2]))
     end = time.time()
