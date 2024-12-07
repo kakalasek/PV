@@ -27,12 +27,12 @@ matice = [
 class Hledac():
 
     def __init__(self, nejvyssi_cislo):
-        self.nejvyssi_cislo = nejvyssi_cislo
+        self.nejvyssi_cislo = multiprocessing.Value('i', nejvyssi_cislo)
 
     def hledej_nejvyssi_cislo(self, radek):
         for cislo in radek:
-            if cislo > self.nejvyssi_cislo:
-                self.nejvyssi_cislo =  cislo
+            if cislo > self.nejvyssi_cislo.value:
+                self.nejvyssi_cislo.value = cislo
 
 if __name__ == "__main__":
 
@@ -40,7 +40,7 @@ if __name__ == "__main__":
     hledac = Hledac(matice[0][0])
 
     for radek in matice:
-        p = threading.Thread(target=hledac.hledej_nejvyssi_cislo, args=(radek,))
+        p = multiprocessing.Process(target=hledac.hledej_nejvyssi_cislo, args=(radek,))
         pool.append(p)
 
     for p in pool:
@@ -49,4 +49,4 @@ if __name__ == "__main__":
     for p in pool:
         p.join()
 
-    print(hledac.nejvyssi_cislo)
+    print(hledac.nejvyssi_cislo.value)
