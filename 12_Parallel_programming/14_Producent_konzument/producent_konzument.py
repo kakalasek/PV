@@ -5,9 +5,8 @@ from queue import Queue
 def producent(queue: Queue):
     print('Producent zacal')
     for pismeno in ["a","h","o","j","s","v","e","t","e"]:
-        if queue.full() >= 3:
+        while queue.full():
             sleep(0.5)
-            continue
         queue.put(pismeno)
         print("Producent vlozil do fronty pismeno : {}".format(pismeno))
         sleep(0.5)

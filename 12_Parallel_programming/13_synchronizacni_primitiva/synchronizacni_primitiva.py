@@ -15,10 +15,10 @@ class BankovniUcet:
 
 mujUcet = BankovniUcet(0)
 
-t1 = threading.Thread(target=mujUcet.vloz_mince, args=(1000,1))
-t2 = threading.Thread(target=mujUcet.vloz_mince, args=(1000,2))
-t3 = threading.Thread(target=mujUcet.vloz_mince, args=(1000,5))
-t4 = threading.Thread(target=mujUcet.vloz_mince, args=(1000,10))
+t1 = threading.Thread(target=mujUcet.vloz_mince, args=(100000,1))
+t2 = threading.Thread(target=mujUcet.vloz_mince, args=(100000,2))
+t3 = threading.Thread(target=mujUcet.vloz_mince, args=(100000,5))
+t4 = threading.Thread(target=mujUcet.vloz_mince, args=(100000,10))
 
 t1.start()
 t2.start()
