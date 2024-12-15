@@ -1,0 +1,23 @@
+[
+    {
+        "company_name": "SPSE Jecna",
+        "ico": 61385301,
+        "phones": [
+            "224941469",
+            "224942066"
+        ],
+        "desc": "\u0160kola nab\u00edz\u00ed obory: \n    - Informatika\n    - Elektrotechnika\n    a jej\u00ed \u0159editel \u0159\u00edka: \"Je to nejlep\u0161\u00ed \u0161kola v Praze\".\n    "
+    },
+    {
+        "company_name": "Seznam.cz",
+        "ico": 26168685,
+        "phones": "234694111",
+        "desc": null
+    },
+    {
+        "company_name": "PPF A.S",
+        "ico": 25099345,
+        "phones": null,
+        "desc": "Zkratka 'PPF' znamen\u00e1 prvn\u00ed privatiza\u010dn\u00ed fond."
+    }
+]
