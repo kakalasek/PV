@@ -10,7 +10,9 @@ class ConsoleView():
         self.show_menu_input = True
         self.show_message = False
         self.show_task_list = False
+        self.show_first_task = False
         self.show_new_task_input = False
+        self.show_confirm = False
         self.message = None
 
     def print_line(self,symbol = "="):
@@ -30,6 +32,22 @@ class ConsoleView():
         if (i == 0):
             print("\t(žádné úkoly)")
 
+    def print_first_task(self):
+        self.print_line()
+        print("První úkol:")
+        first_task = self.model.get_first()
+        if first_task:
+            print("\t" + ". " + first_task.strip())
+        else:
+            print("\t(žádné úkoly)")
+
+    def confirm(self):
+        self.print_line()
+        check = input("Opravdu to chcete udělat [ano/ne]?:")
+        if check.casefold().strip() == "ano":
+            return True
+        return False
+
     def new_task_input(self):
         self.print_line()
         new_task = None
@@ -44,8 +62,10 @@ class ConsoleView():
     def menu_input(self):
         actions = [
             ("Vypsat seznam", self.controller.show_task_list),
+            ("Vypsat první úkol", self.controller.show_first_task),
             ("Přidat na seznam", self.controller.show_new_task_input),
             ("Smazat celý seznam", self.controller.remove_task_list),
+            ("Smazat první úkol", self.controller.remove_first_task),
             ("Ukončit program", self.controller.terminate),
         ]
 
@@ -76,6 +96,9 @@ class ConsoleView():
 
         if (self.show_task_list == True):
             self.print_task_list()
+
+        if (self.show_first_task == True):
+            self.print_first_task()
 
         if (self.show_new_task_input == True):
             self.new_task_input()

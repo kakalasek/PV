@@ -34,10 +34,27 @@ class TaskListController():
         self.view.show_task_list = True
         self.view.update()
 
-    def remove_task_list(self):
-        self.model.remove_all()
-
+    def show_first_task(self):
         self.view.reset()
-        self.view.message = "Seznam ukolu byl smazán."
-        self.view.show_message = True
+        self.view.show_first_task = True
+        self.view.update()
+
+    def remove_task_list(self):
+
+        if self.view.confirm():
+            self.model.remove_all()
+            self.view.reset()
+            self.view.message = "Seznam ukolu byl smazán."
+            self.view.show_message = True
+
+        self.view.update()
+
+    def remove_first_task(self):
+
+        if self.view.confirm():
+            self.model.remove_first()
+            self.view.reset()
+            self.view.message = "První úkol byl smazán."
+            self.view.show_message = True
+
         self.view.update()

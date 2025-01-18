@@ -43,6 +43,6 @@ class FileDatabase():
 
             if len(lines) <= 1:
                 os.remove(self.file_path)
-
-            with open(self.file_path, "w") as f:
-                f.writelines(lines[1:])
+            else:
+                with open(self.file_path, "w") as f:
+                    f.writelines(lines[1:])
