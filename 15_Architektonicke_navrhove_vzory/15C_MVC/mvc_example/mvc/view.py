@@ -66,6 +66,7 @@ class ConsoleView():
             except:
                 print("Neplatné zadání musíte zadat číslo mezi 1 až "+str(len(actions)))
                 choosen_num = None
+
         action = actions[choosen_num-1][1]
         action()
 
