@@ -20,12 +20,22 @@ class TaskListApplication():
 
     def show_task_list(self):
         task_list = self.database.get_task_list()
-        self.user_interface.print_task_list( task_list)
+        self.user_interface.print_task_list(task_list)
+
+    def show_first_task(self):
+        first_task = self.database.get_first_task()
+        self.user_interface.print_task_list(first_task)
 
     def add_task(self):
         new_task = self.user_interface.new_task_input()
         self.database.add_task(new_task)
 
     def remove_task_list(self):
-        self.database.remove_task_list()
-        self.user_interface.print_message("Seznam ukolů byl smazán.")
+        if self.user_interface.confirm():
+            self.database.remove_task_list()
+            self.user_interface.print_message("Seznam ukolů byl smazán.")
+    
+    def remove_first_task(self):
+        if self.user_interface.confirm():
+            self.database.remove_first_task()
+            self.user_interface.print_message("První úkol byl smazán.")

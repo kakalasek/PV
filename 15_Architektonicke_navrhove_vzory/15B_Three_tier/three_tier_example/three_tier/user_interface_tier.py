@@ -32,12 +32,20 @@ class ConsoleUserInterface:
                 print("Neplatné zadání musíte zadat nějaký text")
                 new_task = None
         return new_task
+    
+    def confirm(self):
+        check = input("Opravdu to chcete udělat [ano/ne]?:")
+        if check.casefold().strip() == "ano":
+            return True
+        return False
 
     def menu_input(self):
         commands = [
             ("Vypsat seznam", self.application.show_task_list),
+            ("Vypsat první úkol", self.application.show_first_task),
             ("Přidat na seznam", self.application.add_task),
             ("Smazat celý seznam", self.application.remove_task_list),
+            ("Smazat první úkol", self.application.remove_first_task),
             ("Ukončit program", self.application.terminate),
         ]
 
