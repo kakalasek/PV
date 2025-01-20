@@ -1,29 +1,35 @@
 import socket
 
-host = "127.0.0.1"
-port = 65533
 
-server_inet_address = (host, port)
+try:
+    host = "127.0.0.1"
+    port = 65533
 
-server_socket = socket.socket()
-server_socket.bind(server_inet_address)
-server_socket.listen()
-print("Server start on " + str(server_inet_address[0]) + ":" + str(server_inet_address[1]))
+    server_inet_address = (host, port)
 
-connection, client_inet_address = server_socket.accept()
-print("Client connection accepted from " + str(client_inet_address[0]) + ":" + str(client_inet_address[1]))
+    server_socket = socket.socket()
+    server_socket.bind(server_inet_address)
+    server_socket.listen()
+    print("Server start on " + str(server_inet_address[0]) + ":" + str(server_inet_address[1]))
 
-message = "Hello there\n"
-message = bytes(message, "utf-8")
-print("Sending bytes:")
+    connection, client_inet_address = server_socket.accept()
+    print("Client connection accepted from " + str(client_inet_address[0]) + ":" + str(client_inet_address[1]))
 
-for byte in message:
-    print(bin(byte))
+    message = "Hello there\n"
+    message = bytes(message, "utf-8")
+    print("Sending bytes:")
 
-connection.send(message)
+    for byte in message:
+        print(bin(byte))
 
-connection.close()
-print("Client connection closed")
+    connection.send(message)
 
-server_socket.close()
-print("Server is closed")
+
+except Exception as e:
+    print(e)
+finally:
+    server_socket.close()
+    print("Server is closed")
+
+    connection.close()
+    print("Client connection closed")
