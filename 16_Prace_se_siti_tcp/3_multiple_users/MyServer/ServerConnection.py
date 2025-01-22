@@ -12,7 +12,8 @@ class ServerConnection():
         self._commands = {'help': self._help,
                           'shutdown': self._broadcast,
                           'citat': returnCitat,
-                          'datum': returnDatum}
+                          'datum': returnDatum,
+                          'clients': self._clientNumber}
 
     def startListening(self):
         try:
@@ -36,6 +37,9 @@ class ServerConnection():
     def _broadcast(self):
         for t in self._userThreadPool:
             t.sendMessage(b'Broadcast message')
+
+    def _clientNumber(self):
+        return str(len(self._userThreadPool)).encode('utf-8')
 
     def _shutdown(self):
         self._server_socket.close()
