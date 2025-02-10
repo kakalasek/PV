@@ -1,9 +1,16 @@
 import itertools
 import math
 import random
+import time
+import tracemalloc
 
 # Deterministicky
 def boat_brute_force(a, b, c):
+    tracemalloc.start()
+    startTime = time.time()
+
+    # === Zacatek Mereni === 
+
     perms = list(itertools.permutations([a, b, c]))
     best = math.inf
     results = list()
@@ -15,10 +22,24 @@ def boat_brute_force(a, b, c):
         if abs(perm[0] - perm[2]) == best:
             results.append(perm)
 
+    # === Konec Mereni ===
+
+    timeConsumption = (time.time() - startTime) * 1000
+    memoryConsumption = tracemalloc.get_tracemalloc_memory()
+    tracemalloc.stop()
+
+    print("BRUTE FORCE - Spotreba pameti: " + str(memoryConsumption) + " Bytes")
+    print("BRUTE FORCE - Spotreba casu: " + str(timeConsumption))
+
     return results
 
 # Nedeterministicky
 def boat_monte_carlo(a, b, c):
+    tracemalloc.start()
+    startTime = time.time()
+
+    # === Zacatek Mereni === 
+
     perms = list()
     while True:
         perm = [a, b, c]
@@ -38,11 +59,25 @@ def boat_monte_carlo(a, b, c):
         if abs(perm[0] - perm[2]) == best:
             results.append(perm)
 
+    # === Konec Mereni ===
+
+    timeConsumption = (time.time() - startTime) * 1000
+    memoryConsumption = tracemalloc.get_tracemalloc_memory()
+    tracemalloc.stop()
+
+    print("MONTE CARLO - Spotreba pameti: " + str(memoryConsumption) + " Bytes")
+    print("MONTE CARLO - Spotreba casu: " + str(timeConsumption) + " milisec")
+
     return results
 
 
 # Deterministicky
 def boat_heuristic(a, b, c):
+    tracemalloc.start()
+    startTime = time.time()
+
+    # === Zacatek Mereni === 
+
     perms = list()
     perms.append([c, a, b])    
     perms.append([a, b, c])    
@@ -61,13 +96,20 @@ def boat_heuristic(a, b, c):
     second_result = list(results[0])
     second_result.reverse()
     results.append(second_result)
+    
+    # === Konec Mereni ===
+
+    timeConsumption = (time.time() - startTime) * 1000
+    memoryConsumption = tracemalloc.get_tracemalloc_memory()
+    tracemalloc.stop()
+
+    print("HEURISTIKA - Spotreba pameti: " + str(memoryConsumption) + " Bytes")
+    print("HEURISTIKA - Spotreba casu: " + str(timeConsumption) + " milisec")
 
     return results
 
 
 if __name__ == "__main__":
-    perms = list(itertools.permutations([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]))
-    print("hello")
-    #print("Brute force: " + str(boat_brute_force(73, 85, 81)))
-    #print("Monte carlo: " + str(boat_monte_carlo(73, 85, 81)))
-    #print("Heuristic: " + str(boat_heuristic(73, 85, 81)))
+    print("Brute force: " + str(boat_brute_force(73, 85, 81)))
+    print("Monte carlo: " + str(boat_monte_carlo(73, 85, 81)))
+    print("Heuristic: " + str(boat_heuristic(73, 85, 81)))
