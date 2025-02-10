@@ -124,7 +124,7 @@ def boat_heuristic(space: list):
 
 
 if __name__ == "__main__":
-    boat: list = [73, 85, 95, 81, 36, 76, 113, 91, 100, 64]
-    print("Brute force: " + str(boat_brute_force(boat)))
+    boat: list = [73, 85, 95, 81, 36, 76, 113, 91, 100, 64, 54, 23, 123, 53, 513, 123, 11, 535, 12, 532 ,12, 123, 53, 152, 163, 152, 12, 43, 122, 43, 73, 85, 95, 81, 36, 76, 113, 91, 100, 64, 54, 23, 123, 53, 513, 123, 11, 535, 12, 532 ,12, 123, 53, 152, 163, 152, 12, 43, 122, 43]
+    #print("Brute force: " + str(boat_brute_force(boat)))
     print("Monte carlo: " + str(boat_monte_carlo(boat)))
     # print("Heuristic: " + str(boat_heuristic(73, 85, 81)))
