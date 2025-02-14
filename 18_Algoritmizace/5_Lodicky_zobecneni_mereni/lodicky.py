@@ -32,8 +32,6 @@ def boat_brute_force(space: list):
     print("BRUTE FORCE - Spotreba pameti: " + str(memoryConsumption) + " Bytes")
     print("BRUTE FORCE - Spotreba casu: " + str(timeConsumption))
 
-
-    return "a lot"
     return results
 
 # Nedeterministicky
@@ -93,9 +91,8 @@ def boat_heuristic(space: list):
     perms = space[:]
 
     for i in range(0, len(perms)):
-        perms.append([c, a, b])
-        perms.append([a, b, c])
-        perms.append([b, c, a])
+        for i in range(1, len(perms)):
+            print(i)
 
     best = math.inf
     results = list()
@@ -117,14 +114,14 @@ def boat_heuristic(space: list):
     memoryConsumption = tracemalloc.get_tracemalloc_memory()
     tracemalloc.stop()
 
-    print("BRUTE FORCE - Spotreba pameti: " + str(memoryConsumption) + " Bytes")
-    print("BRUTE FORCE - Spotreba casu: " + str(timeConsumption))
+    print("HEURISTIC - Spotreba pameti: " + str(memoryConsumption) + " Bytes")
+    print("HEURISTIC - Spotreba casu: " + str(timeConsumption))
 
     return results
 
 
 if __name__ == "__main__":
-    boat: list = [73, 85, 95, 81, 36, 76, 113, 91, 100, 64, 54, 23, 123, 53, 513, 123, 11, 535, 12, 532 ,12, 123, 53, 152, 163, 152, 12, 43, 122, 43, 73, 85, 95, 81, 36, 76, 113, 91, 100, 64, 54, 23, 123, 53, 513, 123, 11, 535, 12, 532 ,12, 123, 53, 152, 163, 152, 12, 43, 122, 43]
+    boat: list = [73, 85, 95, 81, 36, 76]
     #print("Brute force: " + str(boat_brute_force(boat)))
     print("Monte carlo: " + str(boat_monte_carlo(boat)))
     # print("Heuristic: " + str(boat_heuristic(73, 85, 81)))
